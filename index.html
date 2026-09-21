@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPS para tu vehículo en Jalisco | Localización y protección 24/7</title>
+<meta name="description" content="Instala GPS en tu auto o flotilla en Jalisco. Localización en tiempo real, bloqueo remoto y monitoreo desde tu celular. Cotiza por WhatsApp.">
+
+<!-- ============================================================
+  PIXEL DE META — reemplaza TU_PIXEL_ID por el ID real de tu cuenta
+  (Administrador de Eventos > Fuentes de datos > tu Pixel)
+============================================================= -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1086188733781571');
+fbq('track', 'PageView');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy: #0E1626;
+  --navy-2: #16213A;
+  --paper: #F3F6F8;
+  --paper-2: #E7ECEF;
+  --ink: #101826;
+  --ink-soft: #4C5A6B;
+  --white: #FFFFFF;
+  --orange: #FF6A28;
+  --orange-dark: #E0551A;
+  --teal: #21C6B6;
+  --line-dark: rgba(255,255,255,0.12);
+  --line-light: rgba(16,24,38,0.10);
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --maxw: 1120px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Work Sans', system-ui, sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.5;
+}
+h1,h2,h3,.display{
+  font-family:'Space Grotesk', system-ui, sans-serif;
+  font-weight:600;
+  line-height:1.12;
+  margin:0;
+}
+a{color:inherit;}
+img,svg{display:block;max-width:100%;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+section{padding:88px 0;}
+@media (max-width:640px){ section{padding:56px 0;} }
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 26px;
+  border-radius:var(--radius-s);
+  font-weight:600;
+  font-size:16px;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:transform .15s ease, background .15s ease;
+}
+.btn:active{transform:translateY(1px);}
+.btn-primary{background:var(--orange); color:var(--white);}
+.btn-primary:hover{background:var(--orange-dark);}
+.btn-ghost{background:transparent; color:var(--white); border:1px solid var(--line-dark);}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);}
+.btn-dark{background:var(--navy); color:var(--white);}
+.btn-dark:hover{background:var(--navy-2);}
+
+/* ---------- Nav ---------- */
+header{
+  position:sticky; top:0; z-index:40;
+  background:var(--navy);
+  border-bottom:1px solid var(--line-dark);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 24px; max-width:var(--maxw); margin:0 auto;
+}
+.logo{
+  color:var(--white); font-family:'Space Grotesk',sans-serif;
+  font-weight:700; font-size:19px; letter-spacing:-0.01em;
+}
+.logo span{color:var(--orange);}
+.nav-cta{font-size:15px; padding:11px 20px;}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:var(--navy);
+  color:var(--white);
+  padding:72px 0 96px;
+  position:relative;
+  overflow:hidden;
+}
+.hero .wrap{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap:56px;
+  align-items:center;
+}
+@media (max-width:880px){
+  .hero .wrap{grid-template-columns:1fr;}
+}
+.eyebrow-live{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:14px; color:#B9C3D1;
+  margin-bottom:22px;
+}
+.dot-live{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--teal);
+  box-shadow:0 0 0 0 rgba(33,198,182,0.6);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(33,198,182,0.55);}
+  70%{box-shadow:0 0 0 9px rgba(33,198,182,0);}
+  100%{box-shadow:0 0 0 0 rgba(33,198,182,0);}
+}
+.hero h1{
+  font-size:clamp(34px,4.6vw,52px);
+  max-width:14ch;
+  color:var(--white);
+}
+.hero h1 em{
+  font-style:normal;
+  color:var(--orange);
+}
+.hero p.lead{
+  margin-top:22px;
+  font-size:18px;
+  color:#C4CDD9;
+  max-width:46ch;
+}
+.hero-actions{
+  margin-top:32px;
+  display:flex; gap:14px; flex-wrap:wrap;
+}
+.hero-trust{
+  margin-top:28px;
+  font-size:13.5px;
+  color:#8B99AB;
+}
+
+/* Visual: mapa estilizado */
+.map-card{
+  background:var(--navy-2);
+  border:1px solid var(--line-dark);
+  border-radius:14px;
+  padding:22px;
+  position:relative;
+}
+.map-grid{
+  width:100%; aspect-ratio:4/3.1;
+  border-radius:10px;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 34px),
+    #10192B;
+  position:relative;
+  overflow:hidden;
+}
+.pin{
+  position:absolute; left:52%; top:44%;
+  width:16px; height:16px;
+  transform:translate(-50%,-50%);
+}
+.pin-core{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--orange);
+  border:3px solid var(--white);
+}
+.pin-ring{
+  position:absolute; inset:-16px;
+  border:2px solid var(--orange);
+  border-radius:50%;
+  opacity:0.5;
+  animation:ring 2.2s infinite;
+}
+@keyframes ring{
+  0%{transform:scale(0.4); opacity:0.7;}
+  100%{transform:scale(2.4); opacity:0;}
+}
+.route{
+  position:absolute; left:14%; top:70%;
+  width:60%; height:2px;
+  background:linear-gradient(90deg, transparent, var(--teal) 20%, var(--teal) 80%, transparent);
+  opacity:0.6;
+}
+.map-caption{
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-top:16px; color:#9AA6B5; font-size:13px;
+}
+.map-caption strong{color:var(--white); font-family:'Space Grotesk',sans-serif; font-size:15px;}
+
+/* ---------- Stats / problema ---------- */
+.stats{background:var(--paper);}
+.stats .wrap{
+  display:grid; grid-template-columns:1.1fr 2fr; gap:56px; align-items:start;
+}
+@media (max-width:820px){ .stats .wrap{grid-template-columns:1fr;} }
+.stats h2{font-size:clamp(26px,3.2vw,34px); max-width:16ch;}
+.stat-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+}
+@media (max-width:600px){ .stat-grid{grid-template-columns:1fr;} }
+.stat-num{
+  font-family:'Space Grotesk',sans-serif; font-weight:700;
+  font-size:38px; color:var(--navy);
+}
+.stat-label{font-size:14.5px; color:var(--ink-soft); margin-top:6px;}
+.stat-note{font-size:12px; color:#93A0B0; margin-top:16px;}
+
+/* ---------- Producto ---------- */
+.product{background:var(--white);}
+.section-head{max-width:58ch; margin-bottom:44px;}
+.section-head h2{font-size:clamp(26px,3.2vw,34px);}
+.section-head p{color:var(--ink-soft); margin-top:14px; font-size:16.5px;}
+.card-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+}
+@media (max-width:880px){ .card-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:600px){ .card-grid{grid-template-columns:1fr;} }
+.feature-card{
+  border:1px solid var(--line-light);
+  border-radius:var(--radius-m);
+  padding:28px 24px;
+}
+.feature-icon{
+  width:40px; height:40px;
+  margin-bottom:18px;
+  color:var(--orange);
+}
+.feature-card h3{font-size:18px; margin-bottom:8px;}
+.feature-card p{font-size:14.5px; color:var(--ink-soft); margin:0;}
+
+/* ---------- Cómo funciona ---------- */
+.how{background:var(--paper);}
+.step-row{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
+  counter-reset:step;
+}
+@media (max-width:820px){ .step-row{grid-template-columns:1fr;} }
+.step{position:relative; padding-top:8px;}
+.step-num{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:15px; font-weight:600;
+  color:var(--orange);
+  display:block; margin-bottom:10px;
+}
+.step h3{font-size:18px; margin-bottom:8px;}
+.step p{font-size:14.5px; color:var(--ink-soft); margin:0;}
+
+/* ---------- Precios ---------- */
+.pricing{background:var(--navy); color:var(--white);}
+.pricing .section-head p{color:#B9C3D1;}
+.price-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:24px;
+}
+@media (max-width:720px){ .price-grid{grid-template-columns:1fr;} }
+.price-card{
+  background:var(--navy-2);
+  border:1px solid var(--line-dark);
+  border-radius:var(--radius-m);
+  padding:32px 28px;
+}
+.price-tag{
+  font-size:13px; text-transform:none;
+  color:#9AA6B5; letter-spacing:0.02em;
+}
+.price-amount{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:38px; font-weight:700;
+  margin:10px 0 4px;
+}
+.price-amount small{font-size:15px; font-weight:500; color:#9AA6B5;}
+.price-list{list-style:none; margin:22px 0 0; padding:0;}
+.price-list li{
+  font-size:14.5px; color:#C4CDD9;
+  padding:9px 0; border-top:1px solid var(--line-dark);
+  display:flex; gap:10px;
+}
+.price-list li:first-child{border-top:none;}
+.price-check{color:var(--teal); flex-shrink:0;}
+.price-fineprint{margin-top:22px; font-size:12.5px; color:#8B99AB;}
+
+/* ---------- Testimonio ---------- */
+.testimonial{background:var(--white);}
+.quote-card{
+  max-width:720px; margin:0 auto; text-align:left;
+  border-left:3px solid var(--orange);
+  padding-left:28px;
+}
+.quote-card p{font-size:21px; line-height:1.5; font-family:'Space Grotesk',sans-serif; font-weight:500;}
+.quote-attr{margin-top:18px; font-size:14px; color:var(--ink-soft);}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--paper);}
+.faq-item{
+  border-bottom:1px solid var(--line-light);
+  padding:20px 0;
+}
+.faq-item summary{
+  cursor:pointer; font-weight:600; font-size:16px;
+  list-style:none; display:flex; justify-content:space-between; gap:16px;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{
+  content:'+'; font-size:22px; color:var(--orange); flex-shrink:0;
+}
+.faq-item[open] summary::after{content:'–';}
+.faq-item p{margin:12px 0 0; color:var(--ink-soft); font-size:15px; max-width:64ch;}
+
+/* ---------- CTA final / formulario ---------- */
+.cta-final{background:var(--white);}
+.cta-box{
+  background:var(--navy);
+  border-radius:16px;
+  padding:48px;
+  display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+  color:var(--white);
+}
+@media (max-width:880px){ .cta-box{grid-template-columns:1fr; padding:32px 24px;} }
+.cta-box h2{font-size:clamp(24px,3vw,30px); max-width:16ch;}
+.cta-box p{color:#C4CDD9; margin-top:14px; font-size:15.5px;}
+form.lead{display:flex; flex-direction:column; gap:12px;}
+form.lead input, form.lead select{
+  padding:13px 14px;
+  border-radius:var(--radius-s);
+  border:1px solid var(--line-dark);
+  background:var(--navy-2);
+  color:var(--white);
+  font-size:15px;
+  font-family:inherit;
+}
+form.lead input::placeholder{color:#7C8AA0;}
+form.lead label{font-size:13px; color:#9AA6B5; margin-bottom:-6px;}
+form.lead .btn{margin-top:6px; justify-content:center;}
+.form-note{font-size:12px; color:#7C8AA0; text-align:center;}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy); color:#8B99AB; padding:32px 0; font-size:13.5px;}
+footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+
+/* ---------- WhatsApp flotante ---------- */
+.wa-float{
+  position:fixed; right:20px; bottom:20px; z-index:50;
+  display:flex; align-items:center; gap:10px;
+  background:#25D366; color:#fff;
+  padding:13px 18px; border-radius:999px;
+  text-decoration:none; font-weight:600; font-size:14.5px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+}
+.wa-float svg{width:20px; height:20px; flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Rastreo<span>Jalisco</span></div>
+    <a class="btn btn-primary nav-cta" id="nav-wa-link" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+  </div>
+</header>
+
+<!-- ============= HERO ============= -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow-live"><span class="dot-live"></span> Cobertura activa en todo Jalisco</div>
+      <h1>Localiza tu vehículo <em>en segundos</em>, desde cualquier lugar</h1>
+      <p class="lead">GPS instalado en tu auto o flotilla, con monitoreo en tiempo real, bloqueo remoto de motor y alertas si alguien lo mueve sin tu permiso.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" id="hero-wa-link" target="_blank" rel="noopener">Cotizar instalación</a>
+        <a class="btn btn-ghost" href="#precios">Ver planes</a>
+      </div>
+      <div class="hero-trust">Instalación a domicilio en Guadalajara, Zapopan, Tlaquepaque y municipios cercanos.</div>
+    </div>
+    <div class="map-card">
+      <div class="map-grid">
+        <div class="route"></div>
+        <div class="pin"><div class="pin-ring"></div><div class="pin-core"></div></div>
+      </div>
+      <div class="map-caption">
+        <span><strong>Unidad 04 · Camioneta</strong><br>Última posición: hace 8 seg.</span>
+        <span>[Vista de tu plataforma]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PROBLEMA / STATS ============= -->
+<section class="stats">
+  <div class="wrap">
+    <h2>El robo de vehículos no avisa. Tu protección tampoco debería tardar.</h2>
+    <div>
+      <div class="stat-grid">
+        <div>
+          <div class="stat-num">[X]</div>
+          <div class="stat-label">vehículos robados al día en Jalisco</div>
+        </div>
+        <div>
+          <div class="stat-num">[X]%</div>
+          <div class="stat-label">se recuperan solo con GPS instalado</div>
+        </div>
+        <div>
+          <div class="stat-num">&lt; 24h</div>
+          <div class="stat-label">tiempo promedio de instalación y activación</div>
+        </div>
+      </div>
+      <div class="stat-note">[Reemplaza estas cifras con datos verificados — fuente sugerida: reportes públicos de incidencia vehicular del estado.]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PRODUCTO ============= -->
+<section class="product">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Un sistema completo, no solo un aparato</h2>
+      <p>Tu compra incluye el dispositivo, la instalación, el chip de datos y acceso a la plataforma de monitoreo — para un solo vehículo o para toda tu flotilla.</p>
+    </div>
+    <div class="card-grid">
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <h3>Localización en tiempo real</h3>
+        <p>Consulta la posición exacta de tu vehículo desde tu celular o computadora, en cualquier momento.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <h3>Bloqueo remoto de motor</h3>
+        <p>Si tu unidad es sustraída, puedes limitar el encendido del motor desde la plataforma.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 1 0-12 0c0 4-2 5-2 5h16s-2-1-2-5"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+        <h3>Alertas automáticas</h3>
+        <p>Recibe una notificación si el vehículo se mueve fuera de tu horario o zona habitual.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+        <h3>Historial de rutas</h3>
+        <p>Revisa dónde ha estado tu vehículo en los últimos días — útil para uso personal y control de flotillas.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 15h3"/></svg>
+        <h3>Plataforma multi-unidad</h3>
+        <p>Si administras varios vehículos, monitorea toda tu flotilla desde un solo panel.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4.5"/></svg>
+        <h3>Instalación profesional</h3>
+        <p>Un técnico instala el equipo en tu domicilio u oficina — sin que tengas que dejar el vehículo en un taller.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= CÓMO FUNCIONA ============= -->
+<section class="how">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cómo empezar</h2>
+    </div>
+    <div class="step-row">
+      <div class="step">
+        <span class="step-num">Paso 1</span>
+        <h3>Cotiza por WhatsApp</h3>
+        <p>Nos cuentas cuántos vehículos quieres proteger y tu ubicación en Jalisco. Te confirmamos costo y disponibilidad.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">Paso 2</span>
+        <h3>Agendamos instalación</h3>
+        <p>Un técnico llega a tu domicilio o negocio e instala el equipo. El proceso toma [X minutos/horas].</p>
+      </div>
+      <div class="step">
+        <span class="step-num">Paso 3</span>
+        <h3>Monitorea desde tu celular</h3>
+        <p>Activamos tu acceso a la plataforma y quedas listo para localizar tu unidad cuando quieras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PRECIOS ============= -->
+<section class="pricing" id="precios">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tu kit, armado a tu medida</h2>
+      <p>No es un precio único: el equipo y el plan se arman según tu vehículo, tu flotilla y lo que necesites monitorear. Cotiza sin compromiso y te armamos la propuesta.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-tag">Pago único</div>
+        <div class="price-amount" style="font-size:26px;">Se cotiza según tu kit</div>
+        <p style="color:#C4CDD9; font-size:14.5px; margin-top:2px;">Dispositivo GPS + instalación a domicilio</p>
+        <ul class="price-list">
+          <li><span class="price-check">✓</span> Equipo GPS de rastreo</li>
+          <li><span class="price-check">✓</span> Instalación profesional incluida</li>
+          <li><span class="price-check">✓</span> Configuración inicial en la plataforma</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-tag">Suscripción anual</div>
+        <div class="price-amount" style="font-size:26px;">Se cotiza según tu kit</div>
+        <p style="color:#C4CDD9; font-size:14.5px; margin-top:2px;">Chip de datos + acceso a la plataforma</p>
+        <ul class="price-list">
+          <li><span class="price-check">✓</span> Chip de datos activo todo el año</li>
+          <li><span class="price-check">✓</span> Acceso a la plataforma de monitoreo</li>
+          <li><span class="price-check">✓</span> Soporte durante la vigencia</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:32px;">
+      <a class="btn btn-primary" id="pricing-wa-link" target="_blank" rel="noopener">Pedir mi cotización</a>
+    </div>
+    <p class="price-fineprint" style="text-align:center;">Para flotillas de varias unidades, el precio por vehículo mejora — cuéntanos cuántas y te armamos un plan.</p>
+  </div>
+</section>
+
+<!-- ============= TESTIMONIO ============= -->
+<section class="testimonial">
+  <div class="wrap">
+    <div class="quote-card">
+      <p>"[Espacio para un testimonio real de un cliente — ej. tiempo de recuperación de su vehículo o experiencia con el monitoreo de su flotilla]"</p>
+      <div class="quote-attr">— [Nombre], [Ciudad, Jalisco]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FAQ ============= -->
+<section class="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <details class="faq-item">
+      <summary>¿Qué pasa si no renuevo la suscripción anual?</summary>
+      <p>El chip de datos y el acceso a la plataforma dejan de funcionar al vencer, pero el equipo permanece instalado. Al renovar, se reactiva sin necesidad de reinstalación.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Dan servicio en todo el estado de Jalisco?</summary>
+      <p>Sí, cubrimos instalación en Guadalajara y su zona metropolitana, además de otros municipios del estado — [ajusta según tu cobertura real].</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo monitorear varios vehículos al mismo tiempo?</summary>
+      <p>Sí, la plataforma permite dar de alta la cantidad de unidades que necesites, ideal para flotillas de negocio.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿La instalación daña algo del vehículo?</summary>
+      <p>No, es una instalación no invasiva realizada por un técnico. [Agrega detalles del proceso si lo consideras necesario.]</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============= CTA FINAL + FORMULARIO ============= -->
+<section class="cta-final">
+  <div class="wrap">
+    <div class="cta-box">
+      <div>
+        <h2>Protege tu vehículo esta semana</h2>
+        <p>Déjanos tus datos y te contactamos por WhatsApp para cotizar tu instalación en Jalisco.</p>
+      </div>
+      <form class="lead" id="lead-form">
+        <label for="f-nombre">Nombre</label>
+        <input id="f-nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+        <label for="f-tel">WhatsApp</label>
+        <input id="f-tel" name="telefono" type="tel" placeholder="33 1234 5678" required>
+        <label for="f-ciudad">Municipio</label>
+        <select id="f-ciudad" name="ciudad" required>
+          <option value="" disabled selected>Selecciona tu municipio</option>
+          <option>Guadalajara</option>
+          <option>Zapopan</option>
+          <option>Tlaquepaque</option>
+          <option>Tonalá</option>
+          <option>Tlajomulco</option>
+          <option>Otro municipio de Jalisco</option>
+        </select>
+        <label for="f-unidades">¿Cuántos vehículos quieres proteger?</label>
+        <select id="f-unidades" name="unidades">
+          <option value="1">1 vehículo</option>
+          <option value="2-5">2 a 5 vehículos</option>
+          <option value="6+">Flotilla de 6 o más</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Enviar y continuar en WhatsApp</button>
+      </form>
+      <p class="form-note" style="grid-column:1 / -1;">Al enviar, se abrirá WhatsApp con tus datos precargados para confirmar tu cotización.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> RastreoJalisco · Servicio de GPS vehicular</span>
+    <span>Jalisco, México</span>
+  </div>
+</footer>
+
+<a class="wa-float" id="float-wa-link" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.83 14.09c-.24.68-1.4 1.3-1.93 1.38-.49.08-1.11.11-1.79-.11-.41-.13-.94-.31-1.62-.6-2.85-1.23-4.71-4.09-4.85-4.28-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.38c.24-.27.53-.34.71-.34h.51c.16 0 .38-.03.59.45.24.56.81 1.94.88 2.08.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.14-.28.28-.12.56.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.86.27.14.45.2.51.32.07.11.07.66-.17 1.34Z"/></svg>
+  Escríbenos por WhatsApp
+</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ===================================================================
+  CONFIGURA AQUÍ tu número y mensaje. Formato: código de país + número,
+  sin espacios ni signos (ej. 52 para México + 10 dígitos).
+=================================================================== */
+const WHATSAPP_NUMERO = '52XXXXXXXXXX'; // <-- reemplaza con tu número real
+const MENSAJE_BASE = 'Hola, quiero cotizar un GPS para mi vehículo en Jalisco.';
+
+function buildWaLink(mensaje){
+  return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+}
+
+// Enlaces fijos (nav, hero, botón flotante)
+['nav-wa-link','hero-wa-link','pricing-wa-link','float-wa-link'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.href = buildWaLink(MENSAJE_BASE);
+});
+
+// Formulario: arma un mensaje con los datos y dispara el evento de Lead
+const form = document.getElementById('lead-form');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const nombre = document.getElementById('f-nombre').value.trim();
+  const tel = document.getElementById('f-tel').value.trim();
+  const ciudad = document.getElementById('f-ciudad').value;
+  const unidades = document.getElementById('f-unidades').value;
+
+  const mensaje = `Hola, soy ${nombre}. Quiero cotizar GPS para ${unidades} en ${ciudad}. Mi WhatsApp: ${tel}`;
+
+  // Evento de conversión para el Pixel — así el algoritmo aprende quién genera leads
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead', {
+      content_name: 'formulario_landing',
+      city: ciudad
+    });
+  }
+
+  window.location.href = buildWaLink(mensaje);
+});
+</script>
+
+</body>
+</html>
