@@ -7,6 +7,27 @@
 <meta name="description" content="Instala GPS en tu auto o flotilla en Jalisco. Localización en tiempo real, bloqueo remoto y monitoreo desde tu celular. Cotiza por WhatsApp.">
 
 <!-- ============================================================
+  VISTA PREVIA AL COMPARTIR (Facebook, Instagram, WhatsApp, etc.)
+  IMPORTANTE: reemplaza TU-DOMINIO por tu dominio real de Vercel
+  (ej. https://gps-jalisco-landing.vercel.app) en las 3 líneas de abajo
+  que dicen "TU-DOMINIO". El og:image debe ser una URL absoluta,
+  no una ruta relativa, o Facebook no podrá leerla.
+============================================================= -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://TU-DOMINIO/">
+<meta property="og:title" content="GPS para tu vehículo en Jalisco | Localización y protección 24/7">
+<meta property="og:description" content="Instala GPS en tu auto o flotilla en Jalisco. Localización en tiempo real, bloqueo remoto y monitoreo desde tu celular.">
+<meta property="og:image" content="https://TU-DOMINIO/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_MX">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GPS para tu vehículo en Jalisco | Localización y protección 24/7">
+<meta name="twitter:description" content="Instala GPS en tu auto o flotilla en Jalisco. Localización en tiempo real, bloqueo remoto y monitoreo desde tu celular.">
+<meta name="twitter:image" content="https://TU-DOMINIO/og-image.png">
+
+<!-- ============================================================
   PIXEL DE META — reemplaza TU_PIXEL_ID por el ID real de tu cuenta
   (Administrador de Eventos > Fuentes de datos > tu Pixel)
 ============================================================= -->
@@ -369,6 +390,19 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12
   box-shadow:0 6px 18px rgba(0,0,0,0.25);
 }
 .wa-float svg{width:20px; height:20px; flex-shrink:0;}
+
+/* ---------- Compartir flotante ---------- */
+.share-float{
+  position:fixed; right:20px; bottom:82px; z-index:50;
+  display:flex; align-items:center; gap:10px;
+  background:var(--navy-2); color:#fff;
+  border:1px solid var(--line-dark);
+  padding:12px 18px; border-radius:999px;
+  font-weight:600; font-size:14.5px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  cursor:pointer;
+}
+.share-float svg{width:18px; height:18px; flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -618,6 +652,11 @@ FIN COMENTARIO -->
   </div>
 </footer>
 
+<button class="share-float" id="share-btn" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/></svg>
+  Compartir
+</button>
+
 <a class="wa-float" id="float-wa-link" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.83 14.09c-.24.68-1.4 1.3-1.93 1.38-.49.08-1.11.11-1.79-.11-.41-.13-.94-.31-1.62-.6-2.85-1.23-4.71-4.09-4.85-4.28-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.38c.24-.27.53-.34.71-.34h.51c.16 0 .38-.03.59.45.24.56.81 1.94.88 2.08.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.14-.28.28-.12.56.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.86.27.14.45.2.51.32.07.11.07.66-.17 1.34Z"/></svg>
   Escríbenos por WhatsApp
@@ -663,6 +702,23 @@ form.addEventListener('submit', function(e){
   }
 
   window.location.href = buildWaLink(mensaje);
+});
+
+// Botón de compartir: usa el selector nativo del dispositivo cuando existe
+// (en celular incluye Instagram, WhatsApp, Facebook, etc.), y en escritorio
+// abre el diálogo de compartir de Facebook como respaldo.
+document.getElementById('share-btn').addEventListener('click', async function(){
+  const shareData = {
+    title: document.title,
+    text: 'GPS vehicular con instalación a domicilio en todo Jalisco.',
+    url: window.location.href
+  };
+  if (navigator.share) {
+    try { await navigator.share(shareData); } catch (err) { /* el usuario canceló, no hacer nada */ }
+  } else {
+    const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    window.open(fbUrl, '_blank', 'width=600,height=500');
+  }
 });
 </script>
 
